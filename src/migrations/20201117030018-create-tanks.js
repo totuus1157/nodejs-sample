@@ -12,7 +12,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       crew: {
-        type: Sequelize.FLOAT
+        type: Sequelize.INTEGER
       },
       length: {
         type: Sequelize.FLOAT
