@@ -12,16 +12,16 @@ module.exports = {
         type: Sequelize.STRING
       },
       crew: {
-        type: Sequelize.INTEGER
+        type: Sequelize.FLOAT
       },
       length: {
-        type: Sequelize.INTEGER
+        type: Sequelize.FLOAT
       },
       weight: {
-        type: Sequelize.INTEGER
+        type: Sequelize.FLOAT
       },
       speed: {
-        type: Sequelize.INTEGER
+        type: Sequelize.FLOAT
       },
       team: {
         type: Sequelize.STRING

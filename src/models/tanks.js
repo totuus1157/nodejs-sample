@@ -15,10 +15,10 @@ module.exports = (sequelize, DataTypes) => {
   };
   Tanks.init({
     name: DataTypes.STRING,
-    crew: DataTypes.INTEGER,
-    length: DataTypes.INTEGER,
-    weight: DataTypes.INTEGER,
-    speed: DataTypes.INTEGER,
+    crew: DataTypes.FLOAT,
+    length: DataTypes.FLOAT,
+    weight: DataTypes.FLOAT,
+    speed: DataTypes.FLOAT,
     team: DataTypes.STRING
   }, {
     sequelize,
