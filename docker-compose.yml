@@ -1,0 +1,59 @@
+version: '3.8'
+services:
+  mysql:
+    # MySQL5.7の公式イメージ
+    image: mysql:5.7
+    env_file: ./mysql/mysql.env
+    environment:
+      - TZ=Asia/Tokyo
+    ports:
+      - '3306:3306'
+
+    # ホスト側のディレクトリ:コンテナのディレクトリ
+    #（MySQLのデフォルト設定を上書き）
+    volumes:
+      - ./mysql/conf:/etc/mysql/conf.d/:ro
+      - mysqldata:/var/lib/mysql
+    networks:
+      - backend
+
+  app:
+    # 起動するイメージを指定（ここではNode.js v12の公式イメージ）
+    image: node:12.19.0-stretch
+
+    # 環境変数の追加（MySQLの接続情報）
+    env_file: ./app.env
+
+    # 環境変数を設定
+    environment:
+      - TZ=Asia/Tokyo
+      - DEBUG=app:*
+
+    tty: true
+
+    # ホスト側のポート:コンテナのポート
+    ports:
+      - '3000:3000'
+
+    # ソースコードを格納するフォルダをマウント
+    #（ホスト側の./srcをコンテナの/appにマウント）
+    volumes:
+      - ./src:/app
+
+    # 起動時のカレントフォルダを指定
+    working_dir: /app
+
+    # 起動後に実行するコマンドを指定
+    command: npm run dev
+    networks:
+      - backend
+    depends_on:
+      - mysql
+
+networks:
+  backend:
+
+# コンテナが削除されてもデータが消えずに保持される
+volumes:
+  mysqldata:
+
