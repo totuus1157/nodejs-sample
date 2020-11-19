@@ -11,30 +11,65 @@
       <h1 class="display-4"><%= title %></h1>
     </header>
     <main>
+      <ol class="text-danger">
+        <% if (err != null) { err.errors.forEach((item) => { %>
+        <li><%= item.message %></li>
+        <% });} %>
+      </ol>
       <form method="post" action="/add">
         <div class="form-group">
           <label for="name">車輌名</label>
-          <input class="form-control" name="name" type="text" value=""/>
+          <input class="form-control" name="name" type="text" value="<%= form.name %>"/>
+          <ul class="text-danger">
+            <% if (err != null) { err.get("name").forEach((item) => { %>
+              <li><%= item.message %></li>
+            <% });} %>
+          </ul>
         </div>
         <div class="form-group">
           <label for="crew">搭乗員数</label>
-          <input class="form-control" name="crew" type="number" value=""/>
+          <input class="form-control" name="crew" type="number" value="<%= form.crew %>"/>
+          <ul class="text-danger">
+            <% if (err != null) { err.get("crew").forEach((item) => { %>
+              <li><%= item.message %></li>
+            <% });} %>
+          </ul>
         </div>
         <div class="form-group">
           <label for="length">全長（m）</label>
-          <input class="form-control" name="length" type="number" step="0.01" value=""/>
+          <input class="form-control" name="length" type="number" step="0.01" value="<%= form.length %>"/>
+          <ul class="text-danger">
+            <% if (err != null) { err.get("length").forEach((item) => { %>
+              <li><%= item.message %></li>
+            <% });} %>
+          </ul>
         </div>
         <div class="form-group">
           <label for="weight">重量（ｔ）</label>
-          <input class="form-control" name="weight" type="number" step="0.01" value=""/>
+          <input class="form-control" name="weight" type="number" step="0.01" value="<%= form.weight %>"/>
+          <ul class="text-danger">
+            <% if (err != null) { err.get("weight").forEach((item) => { %>
+              <li><%= item.message %></li>
+            <% });} %>
+          </ul>
         </div>
         <div class="form-group">
           <label for="speed">最高速度（Km/h）</label>
-          <input class="form-control" name="speed" type="number" step="0.01" value=""/>
+          <input class="form-control" name="speed" type="number" step="0.01" value="<%= form.speed %>"/>
+          <ul class="text-danger">
+            <% if (err != null) { err.get("speed").forEach((item) => { %>
+              <li><%= item.message %></li>
+            <% });} %>
+          </ul>
         </div>
         <div class="form-group">
           <label for="team">チーム</label>
-          <input class="form-control" name="team" type="text" value=""/>
+          <input class="form-control" name="team" type="text" value="<%= form.team %>"/>
+          <ul class="text-danger">
+            <% if (err != null) { err.get("team").forEach((item) => { %>
+              <li><%= item.message %></li>
+            <% });} %>
+          </ul>
         </div>
         <input class="btn btn-primary" type="submit" value="作成"/>
       </form>

@@ -14,12 +14,50 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Tanks.init({
-    name: DataTypes.STRING,
-    crew: DataTypes.INTEGER,
-    length: DataTypes.FLOAT,
-    weight: DataTypes.FLOAT,
-    speed: DataTypes.FLOAT,
-    team: DataTypes.STRING
+    name: {
+	    type: DataTypes.STRING,
+	    validate: {
+	      notEmpty: true
+	    }
+  	},
+    crew: {
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty: true,
+        isInt: true,
+        min: 1
+      }
+    },
+    length: {
+      type: DataTypes.FLOAT,
+      validate: {
+        notEmpty: true,
+        isFloat: true,
+        min: 0
+      }
+    },
+    weight: {
+      type: DataTypes.FLOAT,
+      validate: {
+        notEmpty: true,
+        isFloat: true,
+        min: 0
+      }
+    },
+    speed: {
+      type: DataTypes.FLOAT,
+      validate: {
+        notEmpty: true,
+        isFloat: true,
+        min: 0
+      }
+    },
+    team: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: true
+      }
+    }
   }, {
     sequelize,
     modelName: 'Tanks',

@@ -15,22 +15,32 @@ router.get('/', function(req, res, next) {
 
 router.get('/add', (req, res,next) => {
   const data = {
-    title: '新規追加'
+    title: '新規追加',
+    form: new db.Tanks(),
+    err: null
   }
   res.render('add', data);
 });
 
 router.post('/add', (req, res, next) => {
-  db.sequelize.sync().then(() => db.Tanks.create({
+  const form = {
     name: req.body.name,
     crew: req.body.crew,
     length: req.body.length,
     weight: req.body.weight,
     speed: req.body.speed,
-    team: req.body.team
-  })).then(tanks => {
+    team: req.body.team    
+  };
+  db.sequelize.sync().then(() => db.Tanks.create(form).then(tanks => {
     res.redirect('/');
-  });
+  }).catch(err => {
+    const data = {
+      title: '新規追加',
+      form: form,
+      err: err
+    }
+    res.render('add', data);
+  }))
 });
 
 router.get('/edit', (req, res, next) => {
