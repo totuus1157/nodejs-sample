@@ -58,4 +58,22 @@ router.post('/edit', (req, res, next) => {
   });
 });
 
+router.get('/delete', (req, res, next) => {
+  db.Tanks.findByPk(req.query.id).then(tanks => {
+    const data = {
+      title: '削除',
+      form: tanks
+    }
+    res.render('delete', data);
+  });
+});
+
+router.post('/delete', (req, res, next) => {
+  db.sequelize.sync().then(() => db.Tanks.destroy({
+    where: {id:req.body.id}
+  })).then(tanks => {
+    res.redirect('/');
+  });
+});
+
 module.exports = router;
