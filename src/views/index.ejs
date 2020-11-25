@@ -28,15 +28,15 @@
             <td><%= tank.speed %></td>
             <td><%= tank.team %></td>
             <td class="border border-0">
-              <a class="btn btn-info brn-sm" href="/edit?id=<%= tank.id %>" role="button">更新</a>
+              <a class="btn btn-outline-info brn-sm" href="/edit?id=<%= tank.id %>" role="button">✏️</a>
             </td>
             <td class="border border-0">
-              <a class="btn btn-danger brn-sm" href="/delete?id=<%= tank.id %>" role="button">削除</a>
+              <a class="btn btn-outline-danger brn-sm" href="/delete?id=<%= tank.id %>" role="button">❌</a>
             </td>
           </tr>
         <% }); %>
       </table>
-      <a class="btn btn-primary" href="/add" role="button">追加</a>
+      <a class="btn btn-outline-primary font-weight-bold" href="/add" role="button">＋</a>
     </main>
   </body>
 </html>
