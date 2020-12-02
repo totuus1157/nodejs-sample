@@ -1,0 +1,12 @@
+{
+  "name": "nodejs-sample",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node src/bin/www",
+    "heroku-postbuild": "npm install --prefix=src"
+  },
+  "engines": {
+    "node": "12.x"
+  }
+}
+
