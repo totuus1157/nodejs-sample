@@ -1,4 +1,4 @@
-# 大洗女子学園 所有洗車リスト
+# 大洗女子学園 所有戦車リスト
 
 https://stark-reaches-85611.herokuapp.com/
 
